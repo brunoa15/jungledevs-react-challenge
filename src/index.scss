@@ -1,0 +1,19 @@
+@use 'src/variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: variables.$primary-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: variables.$primary-font-bold;
+}
+
+h1 {
+  @include variables.h1;
+  color: variables.$white;
+  @media (max-width: variables.$lg-screen) {
+    @include variables.h2;
+  }
+}

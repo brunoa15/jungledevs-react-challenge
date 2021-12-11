@@ -1,0 +1,75 @@
+$lg-screen: 1024px;
+$grey-0: #000000;
+$grey-24: #3D3D3D;
+$grey-88: #DFDFDF;
+$white: #FFFFFF;
+$background: #FAF9F7;
+$primary-color: #00A870;
+$secondary-color: #5E20A4;
+$gradient: linear-gradient(314.72deg, #C86DD7 -1.5%, #7E49C3 39.43%, #5912AC 86.02%);
+
+@font-face {
+  font-family: 'inter-normal';
+  src: url(./assets/fonts/Inter.ttf);
+  font-weight: normal;
+}
+$primary-font: 'inter-normal';
+@font-face {
+  font-family: 'inter-bold';
+  src: url(./assets/fonts/Inter.ttf);
+  font-weight: 500;
+}
+$primary-font-bold: 'inter-bold';
+
+@mixin body-lg {
+  font-family: $primary-font;
+  font-size: 18px;
+  line-height: 24px;
+}
+@mixin body-md {
+  font-family: $primary-font;
+  font-size: 16px;
+  line-height: 28px;
+}
+@mixin body-sm {
+  font-family: $primary-font;
+  font-size: 14px;
+  line-height: 20px;
+}
+@mixin body-xs {
+  font-family: $primary-font;
+  font-size: 12px;
+  line-height: 16px;
+}
+@mixin link {
+  font-family: $primary-font-bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: underline;
+}
+@mixin h1 {
+  font-family: $primary-font-bold;
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: -1px;
+}
+@mixin h2 {
+  font-family: $primary-font-bold;
+  font-size: 28px;
+  line-height: 32px;
+}
+@mixin h3 {
+  font-family: $primary-font-bold;
+  font-size: 22px;
+  line-height: 32px;
+}
+@mixin h4 {
+  font-family: $primary-font-bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+@mixin h5 {
+  font-family: $primary-font-bold;
+  font-size: 14px;
+  line-height: 20px;
+}
