@@ -2,6 +2,7 @@
 
 .lp-header {
   height: 616px;
+  margin-top: -64px;
   background: url(../../assets/images/header-image.png), variables.$gradient;
   background-size: cover;
   background-position: center;
@@ -41,6 +42,9 @@
     @media (max-width: variables.$lg-screen) {
       text-align: center;
     }
+    @media (max-width: variables.$md-screen) {
+      max-width: 277px;
+    }
   }
 
   &__description {
@@ -52,6 +56,9 @@
       @include variables.body-md;
       text-align: center;
       margin-bottom: 66px;
+    }
+    @media (max-width: variables.$md-screen) {
+      max-width: 328px;
     }
   }
 
