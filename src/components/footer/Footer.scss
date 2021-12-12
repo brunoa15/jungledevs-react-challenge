@@ -1,4 +1,4 @@
-@use 'src/variables';
+@use 'src/sass/variables';
 
 .footer {
   height: 540px;
@@ -9,14 +9,24 @@
   flex-direction: column;
   align-items: center;
   color: variables.$grey-24;
+  @media (max-width: variables.$md-screen) {
+    padding-top: 40px;
+    height: auto;
+  }
 
   &__title {
     @include variables.h2;
+    @media (max-width: variables.$md-screen) {
+      @include variables.h3;
+    }
   }
 
   &__text {
     @include variables.body-lg;
-    margin: 16px 0 32px;
+    margin: 8px 0 24px;
+    @media (max-width: variables.$md-screen) {
+      @include variables.body-md;
+    }
   }
 
   &__button {
@@ -54,18 +64,29 @@
     @include variables.link;
     color: variables.$secondary-color;
     margin: 24px 0 72px;
+    @media (max-width: variables.$md-screen) {
+      margin-bottom: 48px; 
+    }
   }
 
   &__page-links {
     width: 100%;
     box-sizing: border-box;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 0 128px 75px;
+    @media (max-width: variables.$md-screen) {
+      padding: 0;
+    }
   }
 
   &__logo-container {
     width: 173px;
+    @media (max-width: variables.$md-screen) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__links-list {
@@ -73,19 +94,33 @@
     justify-content: center;
     flex: 1;
     flex-wrap: wrap;
+    @media (max-width: variables.$md-screen) {
+      width: 100%;
+      padding: 0 64px;
+      margin: 24px 0;
+    }
+    @media (max-width: variables.$xs-screen) {
+      padding: 0 16px;
+    }
 
     >a {
       @include variables.h5;
       color: variables.$grey-24;
       text-decoration: none;
-      margin-right: 30px;
-      &:last-child {
-        margin-right: 0;
+      margin-right: 15px;
+      margin-left: 15px;
+      @media (max-width: variables.$md-screen) {
+        margin-top: 8px;
+        margin-bottom: 8px;
       }
     }
   }
 
   &__social-links {
+    @media (max-width: variables.$md-screen) {
+      width: 100%;
+      text-align: center;
+    }
     >a {
       margin-right: 16px;
       &:last-child {
@@ -98,5 +133,21 @@
     @include variables.body-xs;
     color: variables.$grey-24;
     opacity: 0.6;
+    @media (max-width: variables.$md-screen) {
+      margin-bottom: 24px;
+    }
+    @media (max-width: variables.$xs-screen) {
+      padding: 0 54px;
+      text-align: center;
+    }
+  }
+
+  &__line-container {
+    display: none;
+    @media (max-width: variables.$md-screen) {
+      display: flex;
+      width: 100%;
+      margin: 40px 0 24px;
+    }
   }
 }

@@ -1,7 +1,7 @@
 $lg-screen: 1023px;
 $md-screen: 767px;
 $sm-screen: 374px;
-$xs-screen: 319px;
+$xs-screen: 320px;
 $grey-0: #000000;
 $grey-24: #3D3D3D;
 $grey-88: #DFDFDF;
@@ -13,13 +13,13 @@ $gradient: linear-gradient(314.72deg, #C86DD7 -1.5%, #7E49C3 39.43%, #5912AC 86.
 
 @font-face {
   font-family: 'inter-normal';
-  src: url(./assets/fonts/Inter.ttf);
+  src: url(../assets/fonts/Inter.ttf);
   font-weight: normal;
 }
 $primary-font: 'inter-normal';
 @font-face {
   font-family: 'inter-bold';
-  src: url(./assets/fonts/Inter.ttf);
+  src: url(../assets/fonts/Inter.ttf);
   font-weight: 500;
 }
 $primary-font-bold: 'inter-bold';

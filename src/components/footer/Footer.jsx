@@ -5,6 +5,7 @@ import facebook from '../../assets/images/facebook.svg'
 import twitter from '../../assets/images/twitter.svg'
 import instagram from '../../assets/images/instagram.svg'
 import './Footer.scss'
+import '../../sass/common.scss'
 
 const Footer = () => (
   <footer className="footer">
@@ -31,6 +32,9 @@ const Footer = () => (
         <a href="/"><img src={twitter} alt="twitter" /></a>
         <a href="/"><img src={instagram} alt="instagram" /></a>
       </div>
+    </div>
+    <div className="footer__line-container">
+      <div className="common__vertical-line common__vertical-line--margin-16" />
     </div>
     <span className="footer__copyright">Copyright © 2017 Hapu PTY Limited All rights reserved</span>
   </footer>
