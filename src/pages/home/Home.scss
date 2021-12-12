@@ -3,7 +3,7 @@
 .lp-header {
   height: 616px;
   margin-top: -64px;
-  background: url(../../assets/images/header-image.png), variables.$gradient;
+  background-image: url(../../assets/images/header-image.png), variables.$gradient;
   background-size: cover;
   background-position: center;
   display: grid;
@@ -18,6 +18,9 @@
     grid-template-areas:
     "."
     "title";
+  }
+  @media (max-width: variables.$md-screen) {
+    background-image: url(../../assets/images/header-image-mobile.png), variables.$gradient;
   }
 
   &__area-title {
@@ -70,18 +73,17 @@
   }
 
   &__button {
-    cursor: pointer;
-    padding: 0;
-
-    &--no-decoration {
-      background: transparent;
-      border: none;
-    }
+    background: transparent;
   }
 
   &__video-link {
     @include variables.link;
     color: variables.$white;
   }
+}
+
+.lp-body {
+  height: 500px;
+  background-color: variables.$background;
 }
 

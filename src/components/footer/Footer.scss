@@ -1,0 +1,102 @@
+@use 'src/variables';
+
+.footer {
+  height: 540px;
+  box-sizing: border-box;
+  padding-top: 80px;
+  background-color: variables.$white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: variables.$grey-24;
+
+  &__title {
+    @include variables.h2;
+  }
+
+  &__text {
+    @include variables.body-lg;
+    margin: 16px 0 32px;
+  }
+
+  &__button {
+    background-color: variables.$secondary-color;
+    color: variables.$white;
+    width: 304px;
+    height: 68px;
+    border-radius: 4px;
+    display: grid;
+    grid-template: 8px 32px auto/24px 52px auto;
+    grid-template-areas:
+      ". . ."
+      ". icon title"
+      ". icon text";
+  }
+
+  &__button-image {
+    grid-area: icon;
+    margin-top: 10px;
+  }
+
+  &__button-title {
+    @include variables.body-md;
+    grid-area: title;
+    text-align: left;
+  }
+
+  &__button-text {
+    @include variables.body-xs;
+    grid-area: text;
+    text-align: left;
+  }
+
+  &__purple-link {
+    @include variables.link;
+    color: variables.$secondary-color;
+    margin: 24px 0 72px;
+  }
+
+  &__page-links {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 128px 75px;
+  }
+
+  &__logo-container {
+    width: 173px;
+  }
+
+  &__links-list {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+
+    >a {
+      @include variables.h5;
+      color: variables.$grey-24;
+      text-decoration: none;
+      margin-right: 30px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__social-links {
+    >a {
+      margin-right: 16px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__copyright {
+    @include variables.body-xs;
+    color: variables.$grey-24;
+    opacity: 0.6;
+  }
+}

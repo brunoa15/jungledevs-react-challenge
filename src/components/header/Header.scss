@@ -13,21 +13,20 @@
     flex: 1;
   }
 
+  &__link-list {
+    margin-right: 32px;
+    &:first-child {
+      margin-left: 40px;
+    }
+    @media (max-width: variables.$lg-screen) {
+      display: none;
+    }
+  }
+
   &__link {
     @include variables.h5;
     text-decoration: none;
-    margin-right: 40px;
     color: variables.$white;
-    @media (min-width: variables.$xs-screen) and (max-width: variables.$sm-screen) {
-      margin-right: 32px;
-    }
-
-    &--secondary {
-      margin-right: 32px;
-      @media (max-width: variables.$lg-screen) {
-        display: none;
-      }
-    }
   }
 
   &__button {
@@ -37,9 +36,7 @@
     height: 44px;
     padding: 0 22px;
     border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    @media (min-width: variables.$xs-screen) and (max-width: variables.$sm-screen) {
+    @media (max-width: variables.$sm-screen) {
       padding: 0 8px;
     }
 
