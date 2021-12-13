@@ -8,4 +8,14 @@
   &--margin-16 {
     margin: 0 16px;
   }
+
+  &--margin-80 {
+    margin: 0 80px;
+  }
+
+  &--no-margin-mobile {
+    @media (max-width: variables.$lg-screen) {
+      margin: 0;
+    }
+  }
 }

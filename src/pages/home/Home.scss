@@ -140,23 +140,116 @@
   &__main-container {
     max-width: 1024px;
     margin: auto;
+    padding: 88px 0;
+    @media (max-width: variables.$lg-screen) {
+      padding: 24px 16px;
+    }
+    @media (max-width: variables.$xs-screen) {
+      padding: 24px 8px;
+    }
   }
 
-  &__section-1 {
+  &__section {
+    padding: 32px 0;
     display: grid;
+    grid-gap: 40px;
+    grid-template: repeat(2, auto) 100%/44% auto;
     grid-template-areas: 
       "title img"
       "text img"
       "link img";
+
+    * {
+      @media (max-width: variables.$lg-screen) {
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+
+    &--left-image {
+      grid-template-areas: 
+      "img title"
+      "img text"
+      "img link";
+    }
+
+    &--mobile {
+      @media (max-width: variables.$lg-screen) {
+        grid-gap: 32px;
+        grid-template: initial;
+        grid-template-areas: 
+        "img"
+        "title"
+        "text"
+        "link";
+      }
+    }
+  }
+
+  &__section-inputs {
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__section-column {
+    padding: 32px 0;
+    text-align: center;
+    display: grid;
+    grid-gap: 40px;
+    grid-template-areas: 
+      "title"
+      "text"
+      "link"
+      "img";
+    @media (max-width: variables.$lg-screen) {
+      grid-gap: 32px;
+      grid-template-areas:
+      "title"
+      "text"
+      "link";
+    }
+
+    * {
+      @media (max-width: variables.$lg-screen) {
+        margin: 0 auto;
+        text-align: center;
+      }
+    }
+
+    &--no-link {
+      grid-template-areas: 
+        "img"
+        "title"
+        "text";
+      @media (max-width: variables.$lg-screen) {
+        grid-gap: 32px;
+      }
+    }
   }
 
   &__section-title {
     @include variables.h2;
     grid-area: title;
     color: variables.$grey-24;
+    @media (max-width: variables.$lg-screen) {
+      @include variables.h3;
+    }
 
     &--narrow {
-      width: 248px;
+      width: 240px;
+    }
+
+    &--mobile-narrow {
+      @media (max-width: variables.$lg-screen) {
+        width: 240px;
+      }
+    }
+
+    &--inputs {
+      @include variables.h3;
     }
   }
 
@@ -165,16 +258,37 @@
     grid-area: text;
     color: variables.$grey-24;
     opacity: 0.9;
+
+    &--inputs {
+      margin: 16px 0 64px;
+      @media (max-width: variables.$lg-screen) {
+        margin: 16px 0;
+      }
+    }
   }
 
   &__section-img {
     grid-area: img;
-    display: flex;
-    align-items: center;
+    height: fit-content;
+    
+    >img {
+      max-width: 100%;
+    }
+
+    &--no-mobile-img {
+      @media (max-width: variables.$lg-screen) {
+        display: none;
+      }
+    }
   }
 
   &__section-link {
     grid-area: link;
+  }
+
+  &__line-container {
+    display: flex;
+    margin: 40px 0;
   }
 }
 
