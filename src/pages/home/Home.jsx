@@ -7,18 +7,41 @@ import imageSection1 from '../../assets/images/image-section-1.png'
 import imageSection3 from '../../assets/images/image-section-3.png'
 import imageSection4 from '../../assets/images/image-section-4.png'
 import imageSection5 from '../../assets/images/image-section-5.png'
+import LoadingBuffering from '../../assets/images/loading-buffering.gif'
 import CustomInput from '../../components/customInput/CustomInput'
 import subscribe from '../../services/requests/challengeNewsletter'
 
 const Home = () => {
-  const [state, setState] = useState({ name: '', email: '' })
+  const [inputState, setInputState] = useState({ name: '', email: '' })
+  const [errors, setErrors] = useState({ name: [], email: [] })
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setState({
-      name: '',
-      email: '',
-    })
+    setInputState({ name: '', email: '' })
+    setErrors([])
   }, [])
+
+  const handleSubscription = async () => {
+    setErrors([])
+    setLoading(true)
+    const response = await subscribe(inputState)
+    if (response.status === 200) {
+      setInputState({ name: '', email: '' })
+      setLoading(false)
+      return
+    }
+    if (response.status === 400) {  
+      const nameErrors = []
+      const emailErrors = []
+      response.data.name?.map((err) => nameErrors.push(err))
+      response.data.email?.map((err) => emailErrors.push(err))
+      setErrors({ name: nameErrors, email: emailErrors})
+      setLoading(false)
+      return
+    }
+    setErrors({ name: ['Generic error.']})
+    setLoading(false)
+  }
 
   return (
     <>
@@ -94,22 +117,30 @@ const Home = () => {
             </div>
             <div className='lp-body__inputs-container'>
               <CustomInput
-                value={state.name}
-                setValue={(name) => setState({...state, name})}
+                value={inputState.name}
+                setValue={(name) => setInputState({...inputState, name})}
                 placeholder="Your name"
+                errors={errors.name}
               />
               <CustomInput
-                value={state.email}
-                setValue={(email) => setState({...state, email})}
+                value={inputState.email}
+                setValue={(email) => setInputState({...inputState, email})}
                 placeholder="Your email"
+                errors={errors.email}
               />
               <button
                 className="lp-body__input-button"
-                onClick={() => subscribe(state)}
+                onClick={handleSubscription}
               >
                 Send
               </button>
             </div>
+            {loading && (
+              <div className="lp-body__loading">
+                <img width="16" height="16" src={LoadingBuffering} alt="loading" />
+                Sending...
+              </div>
+            )}
           </section>
           <div className="lp-body__line-container">
             <div className="common__vertical-line common__vertical-line--margin-80 common__vertical-line--no-margin-mobile" />

@@ -14,4 +14,14 @@
   &::placeholder {
     color: variables.$grey-24;
   }
+
+  &__errors {
+    max-width: 100%;
+    
+    >p {
+      @include variables.body-xs;
+      color: variables.$error;
+      text-align: left;
+    }
+  }
 }

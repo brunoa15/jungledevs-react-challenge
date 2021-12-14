@@ -201,7 +201,7 @@
     grid-template-areas: ". . .";
     @media (max-width: variables.$md-screen) {
       width: 100%;
-      grid-gap: 10px;
+      grid-gap: 16px;
       grid-template: repeat(2, 48px) 56px/auto;
       grid-template-areas:
         "."
@@ -210,14 +210,23 @@
     }
   }
 
+  &__loading {
+    color: variables.$primary-color;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    
+    >img {
+      margin-right: 8px;
+    }
+  }
+
   &__input-button {
     @include variables.h5;
     color: variables.$white;
     background-color: variables.$primary-color;
     border-radius: 4px;
-    @media (max-width: variables.$md-screen) {
-      margin-top: 8px;
-    }
+    height: 48px;
   }
 
   &__section-column {
