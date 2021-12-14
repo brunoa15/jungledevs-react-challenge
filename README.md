@@ -28,5 +28,5 @@ needing of share them with another components, I thought it was not necessary\
 to use Redux or Context.
 * Honestly, I've never implemented an A/B Test on React, so my aproach to this\
 was to generate a random number (0 or 1) on user first access to page. Based on\
-that random number, a different hero section is shown to user and thist information\
+that random number, a different hero section is shown to user and this information\
 is stored at browser's local storage.
