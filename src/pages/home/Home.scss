@@ -54,7 +54,7 @@
   }
 
   &__title {
-    max-width: 490px;
+    max-width: 510px;
     @media (max-width: variables.$lg-screen) {
       text-align: center;
     }
@@ -274,7 +274,7 @@
     }
 
     &--narrow {
-      width: 240px;
+      width: 252px;
     }
 
     &--mobile-narrow {

@@ -14,20 +14,47 @@ import subscribe from '../../services/requests/challengeNewsletter'
 const Home = () => {
   const [inputState, setInputState] = useState({ name: '', email: '' })
   const [errors, setErrors] = useState({ name: [], email: [] })
-  const [loading, setLoading] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [heroVersion, setHeroVersion] = useState(null)
+
+  const versionA = 0
+
+  const heroVersionA = {
+    title: 'Easily create or join a local nanny share with Hapu',
+    description:
+      'Hapu is Airbnb for nanny share. Share your home, nanny and costs ' + 
+      'and create new flexible, affordable solutions in childcare.',
+  }
+
+  const heroVersionB = {
+    title: 'Create the childcare you need at a price you can afford',
+    description:
+      'Connect with other local families to share a nanny from as low as ' +
+      '$10.00/hr each. Create your family profile today to get started.'
+  }
 
   useEffect(() => {
     setInputState({ name: '', email: '' })
     setErrors([])
+    const heroVersionStored = localStorage.getItem('hapu_hero_version')
+    if (heroVersionStored) {
+      setHeroVersion(parseInt(heroVersionStored))
+    } else {
+      const random_version = Math.floor(Math.random() * 2)
+      localStorage.setItem('hapu_hero_version', random_version)
+      setHeroVersion(random_version)
+    }
+    setLoading(false)
   }, [])
 
   const handleSubscription = async () => {
     setErrors([])
-    setLoading(true)
+    setSending(true)
     const response = await subscribe(inputState)
     if (response.status === 200) {
       setInputState({ name: '', email: '' })
-      setLoading(false)
+      setSending(false)
       return
     }
     if (response.status === 400) {  
@@ -36,28 +63,32 @@ const Home = () => {
       response.data.name?.map((err) => nameErrors.push(err))
       response.data.email?.map((err) => emailErrors.push(err))
       setErrors({ name: nameErrors, email: emailErrors})
-      setLoading(false)
+      setSending(false)
       return
     }
     setErrors({ name: ['Generic error.']})
-    setLoading(false)
+    setSending(false)
   }
 
   return (
     <>
       <div className="lp-hero">
-        <section className="lp-hero__area-title">
-          <h1 className="lp-hero__title">Easily create or join a local nanny share with Hapu</h1>
-          <p className="lp-hero__description">
-            Hapu is Airbnb for nanny share. Share your home, nanny and costs and create new flexible, affordable solutions in childcare.
-          </p>
-          <div className="lp-hero__flex-area">
-            <button className="lp-hero__button">
-              <img width="48" height="48" src={playButton} alt="play icon - see hapu in action" />
-            </button>
-            <a className="lp-link" href="/">See hapu in action (27 seconds)</a>
-          </div>
-        </section>
+        {!loading && (
+          <section className="lp-hero__area-title">
+            <h1 className="lp-hero__title">
+              {heroVersion === versionA ? heroVersionA.title : heroVersionB.title}
+            </h1>
+            <p className="lp-hero__description">
+              {heroVersion === versionA ? heroVersionA.description : heroVersionB.description}
+            </p>
+            <div className="lp-hero__flex-area">
+              <button className="lp-hero__button">
+                <img width="48" height="48" src={playButton} alt="play icon - see hapu in action" />
+              </button>
+              <a className="lp-link" href="/">See hapu in action (27 seconds)</a>
+            </div>
+          </section>
+        )}
         <div className="lp-hero__area-img">
           <img src={manageNannyImage} alt="manage your nanny share" />
         </div>
@@ -135,7 +166,7 @@ const Home = () => {
                 Send
               </button>
             </div>
-            {loading && (
+            {sending && (
               <div className="lp-body__loading">
                 <img width="16" height="16" src={LoadingBuffering} alt="loading" />
                 Sending...
