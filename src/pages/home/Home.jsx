@@ -8,6 +8,7 @@ import imageSection3 from '../../assets/images/image-section-3.png'
 import imageSection4 from '../../assets/images/image-section-4.png'
 import imageSection5 from '../../assets/images/image-section-5.png'
 import CustomInput from '../../components/customInput/CustomInput'
+import subscribe from '../../services/requests/challengeNewsletter'
 
 const Home = () => {
   const [state, setState] = useState({ name: '', email: '' })
@@ -102,7 +103,12 @@ const Home = () => {
                 setValue={(email) => setState({...state, email})}
                 placeholder="Your email"
               />
-              <button className="lp-body__input-button">Send</button>
+              <button
+                className="lp-body__input-button"
+                onClick={() => subscribe(state)}
+              >
+                Send
+              </button>
             </div>
           </section>
           <div className="lp-body__line-container">
