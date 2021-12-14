@@ -194,6 +194,32 @@
     text-align: center;
   }
 
+  &__inputs-container {
+    display: grid;
+    grid-gap: 12px;
+    grid-template: auto/repeat(2, 232px) 96px;
+    grid-template-areas: ". . .";
+    @media (max-width: variables.$md-screen) {
+      width: 100%;
+      grid-gap: 10px;
+      grid-template: repeat(2, 48px) 56px/auto;
+      grid-template-areas:
+        "."
+        "."
+        ".";
+    }
+  }
+
+  &__input-button {
+    @include variables.h5;
+    color: variables.$white;
+    background-color: variables.$primary-color;
+    border-radius: 4px;
+    @media (max-width: variables.$md-screen) {
+      margin-top: 8px;
+    }
+  }
+
   &__section-column {
     padding: 32px 0;
     text-align: center;

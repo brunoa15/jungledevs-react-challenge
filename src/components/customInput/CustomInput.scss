@@ -1,0 +1,17 @@
+@use 'src/sass/variables';
+
+.custom-input {
+  @include variables.body-sm;
+  height: 48px;
+  width: 100%;
+  padding: 20px;
+  color: variables.$grey-24;
+  background-color: variables.$white;
+  border: 1px solid variables.$grey-88;
+  box-sizing: border-box;
+  border-radius: 4px;
+
+  &::placeholder {
+    color: variables.$grey-24;
+  }
+}

@@ -7,9 +7,10 @@ import imageSection1 from '../../assets/images/image-section-1.png'
 import imageSection3 from '../../assets/images/image-section-3.png'
 import imageSection4 from '../../assets/images/image-section-4.png'
 import imageSection5 from '../../assets/images/image-section-5.png'
+import CustomInput from '../../components/customInput/CustomInput'
 
 const Home = () => {
-  const [state, setState] = useState()
+  const [state, setState] = useState({ name: '', email: '' })
 
   useEffect(() => {
     setState({
@@ -89,6 +90,19 @@ const Home = () => {
                 Leave us your name and email and we'll update you as soon as a share becomes
                 available in your area!
               </p>
+            </div>
+            <div className='lp-body__inputs-container'>
+              <CustomInput
+                value={state.name}
+                setValue={(name) => setState({...state, name})}
+                placeholder="Your name"
+              />
+              <CustomInput
+                value={state.email}
+                setValue={(email) => setState({...state, email})}
+                placeholder="Your email"
+              />
+              <button className="lp-body__input-button">Send</button>
             </div>
           </section>
           <div className="lp-body__line-container">
